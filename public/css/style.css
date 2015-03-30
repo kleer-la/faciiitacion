@@ -630,6 +630,7 @@
 		#header h1 {
 			font-weight: 900;
 			margin: 0;
+			color: #1a1b1a;
 		}
 
 			#header h1 span {
@@ -642,6 +643,7 @@
 			right: 1.5em;
 			text-transform: uppercase;
 			top: 0.75em;
+			color: #1a1b1a;
 		}
 
 			#header nav ul li {

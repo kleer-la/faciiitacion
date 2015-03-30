@@ -1,5 +1,5 @@
 @import url("font-awesome.min.css");
-@import url("http://fonts.googleapis.com/css?family=Lato:300,400,900");
+@import url("http://fonts.googleapis.com/css?family=Roboto:300,400,900");
 
 /*
 	Twenty by HTML5 UP
@@ -28,7 +28,7 @@
 
 	body, input, select, textarea {
 		color: #7c8081;
-		font-family: 'Lato', sans-serif;
+		font-family: 'Roboto', sans-serif;
 		font-size: 15pt;
 		font-weight: 300;
 		letter-spacing: 0.025em;

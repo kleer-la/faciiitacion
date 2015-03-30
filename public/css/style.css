@@ -784,7 +784,7 @@
 			}
 
 	.btn-kleer {
-		box-shadow:5px 5px #a4a4a4;	
+		box-shadow:5px 5px #a4a4a4;
 		transform:rotate(-2deg);
 		-ms-transform:rotate(-2deg);
 		-webkit-transform:rotate(-2deg);
@@ -869,7 +869,7 @@
 			opacity: 0;
 			padding: 3em;
 			text-align: center;
-			box-shadow:5px 5px #3d3f3d;	
+			box-shadow:5px 5px #3d3f3d;
 		}
 
 			#banner .inner header {
@@ -911,7 +911,8 @@
 /* Main */
 
 	#main {
-		background-image: url("images/dark-tl.svg"), url("images/dark-tr.svg"), url("images/dark-bl.svg"), url("images/dark-br.svg");
+/*		background-image: url("images/dark-tl.svg"), url("images/dark-tr.svg"), url("images/dark-bl.svg"), url("images/dark-br.svg");
+*/
 		background-position: top left, top right, bottom left, bottom right;
 		background-repeat: no-repeat;
 		background-size: 25em;
@@ -942,12 +943,12 @@
 
 	#cta {
 		background-attachment: scroll, scroll, scroll, fixed;
-		background-color: #645862;
-		background-image: url("images/light-tl.svg"), url("images/light-tr.svg"), url("images/overlay.png"), url("../images/banner.jpg");
+		background-color: #87cedc;
+/*		background-image: url("images/light-tl.svg"), url("images/light-tr.svg"), url("images/overlay.png"), url("../images/banner.jpg");*/
 		background-position: top left, top right, top left, bottom center;
 		background-repeat: no-repeat, no-repeat, repeat, no-repeat;
 		background-size: 25em, 25em, auto, cover;
-		color: white;
+		color: black;
 		padding: 5em;
 		text-align: center;
 	}

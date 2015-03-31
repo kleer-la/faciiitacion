@@ -411,8 +411,8 @@
 
 	ul.featured-icons {
 		cursor: default;
-		margin: -0.75em 0 0 0;
-		opacity: 0.35;
+		margin: 0 0 0 0;
+		opacity: 0.7;
 		overflow: hidden;
 		position: relative;
 	}
@@ -572,12 +572,12 @@
 		}
 
 		.wrapper.style2 {
-			background-color: #83d3c9;
+			background-color: #55f7cc;
 			background-image: url("images/light-bl.svg"), url("images/light-br.svg");
 			background-position: bottom left, bottom right;
 			background-repeat: no-repeat, no-repeat;
 			background-size: 25em, 25em;
-			color: white;
+			color: black;
 		}
 
 			.wrapper.style2 .button:hover {

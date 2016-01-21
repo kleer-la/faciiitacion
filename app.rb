@@ -6,3 +6,6 @@ get '/' do
 	erb :index
 end
 
+get '/facilitacion-grafica' do
+	erb :fg
+end

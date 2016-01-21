@@ -10,7 +10,7 @@ get '/facilitacion-grafica' do
 	erb :fg
 end
 
-get '/innovacion-creativiad' do
+get '/innovacion-creatividad' do
 	erb :innovacion
 end
 
@@ -18,6 +18,7 @@ get '/planificacion-estrategica' do
 	erb :planificacion
 end
 
-get 'dinamicas-eventos' do
+get '/dinamicas-eventos' do
 	erb :dinamicas
 end
+

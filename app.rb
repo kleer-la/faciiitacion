@@ -11,13 +11,13 @@ get '/facilitacion-grafica' do
 end
 
 get '/innovacion-creativiad' do
-	erb :innovacion-creatividad
+	erb :innovacion
 end
 
 get '/planificacion-estrategica' do
-	erb :planificacion-estrategica
+	erb :planificacion
 end
 
 get 'dinamicas-eventos' do
-	erb :dinamicas-eventos
+	erb :dinamicas
 end

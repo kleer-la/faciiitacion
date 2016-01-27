@@ -7,6 +7,7 @@ end
 
 gem 'sinatra'
 gem 'thin'
+gem 'pony'
 
 group :development do
   gem 'foreman'

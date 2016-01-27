@@ -23,9 +23,10 @@ get '/dinamicas-eventos' do
 	erb :dinamicas
 end
 
+# http://stackoverflow.com/questions/26265358/connection-refused-when-using-pony-mail-sinatra
 post '/contacto/facilitacion' do
-    Pony.mail :to => 'you@example.com',
-            :from => 'me@example.com',
-            :subject => 'Howdy, Partna!'
+    Pony.mail :to => 'juan.gabardini@kleer.la',
+            :from => 'hola@kleer.la',
+            :subject => 'Howdy, Partna!',
+            :body => "Nombre: " + params[:fname] + params[:lname]
 end
-

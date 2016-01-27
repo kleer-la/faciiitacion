@@ -27,10 +27,10 @@
 			<link rel="stylesheet" href="css/kleer-responsive.css" />
 			<link rel="stylesheet" href="css/bootstrap.min.css" />
 			<link rel="stylesheet" href="css/bootstrap-social.css" />
-			
+
 <!--			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 -->
-			
+
 		</noscript>
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
@@ -198,7 +198,7 @@
 									</p>
 								</section>
 							</div>
-							
+
 							<div class="6u 12u(narrower)">
 
 								<section id="InnovacionCreatividad">
@@ -212,7 +212,7 @@
 
 							</div>
 						</div>
-						
+
 						<div class="row">
 							<div class="6u 12u(narrower)">
 
@@ -226,7 +226,7 @@
 									<a href="/planificacion-estrategica">¡Conocé más sobre estos servicios!</a></p>
 								</section>
 							</div>
-							
+
 							<div class="6u 12u(narrower)">
 
 								<section id="DinámicasEventos">
@@ -258,16 +258,31 @@
 					<h2>¿Listo para <strong>iniciar el cambio</strong>?</h2>
 					<p></p>
 				</header>
+				<div class="row">
+					<div class="6u 12u(narrower)">
+						<form method="POST" action="/contacto/facilitacion">
+						<input type="text" name="email" class="suscription-textbox" placeholder="tu@correo.com" id="suscriptionModalEmail"/>
+						<br/>
+						<input type="text" name="fname" class="suscription-textbox" placeholder="Nombre"/>
+						<br/>
+						<input type="text" name="lname" class="suscription-textbox" placeholder="Apellido"/>
+						<br/>
+						<input type="text" name="zone" class="suscription-textbox" placeholder="Tu Ciudad"/>
+						<br/>
+						<input type="text" name="interest" class="suscription-textbox" placeholder="¿Qué te interesa?"/>
+					</form>
+					</div>
+				</div>
 				<footer>
 					<ul class="buttons">
-						<li><a href="#Contacto" class="button vertical btn-kleer btn-warning">
+						<li><a class="button vertical btn-kleer btn-warning" onclick="$('form').submit()">
 							¡Contactanos!</a></li>
 					</ul>
 				</footer>
 
 			</section>
-<a name="Contacto"/>
-<div class="modal fade suscription-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!--
+<div id="contacto" class="modal fade suscription-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display:none">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <form method="POST" action="/contacto/facilitacion">
@@ -294,6 +309,7 @@
     </div>
   </div>
 </div>
+-->
 
 		<!-- Footer -->
 			<footer id="footer">
@@ -312,12 +328,14 @@
 
 <script>
   $(document).ready(function(){
-  	$('.item').eq(Math.floor((Math.random() * $('.item').length))).addClass("active");
-    $('.suscription-textbox').on( 'click', function(){ 
-    	$('.btn-suscription').click() 
+    $('.suscription-textbox').on( 'click', function(){
+    	$('.btn-suscription').click()
     });
-    $('.suscription-modal').on('shown.bs.modal', function (e) { 
-    	$('#suscriptionModalEmail').focus() 
+		$('#contacto').on('shown.bs.modal', function (e) {
+    	$('#suscriptionModalEmail').focus()
+    });
+    $('.suscription-modal').on('shown.bs.modal', function (e) {
+    	$('#suscriptionModalEmail').focus()
     });
   });
 </script>

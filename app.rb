@@ -5,6 +5,20 @@ require 'pony'
 
 enable :sessions
 set :session_secret, '*&(^weq3t'
+
+Pony.options = {
+  :via => :smtp,
+  :via_options => {
+    :address => 'smtp.sendgrid.net',
+    :port => '587',
+    :domain => 'heroku.com',
+    :user_name => ENV['SENDGRID_USERNAME'],
+    :password => ENV['SENDGRID_PASSWORD'],
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
+}
+
 get '/' do
 	@f= {}
 	[:email, :fname, :lname, :zone, :interest]. each {|s|	@f[s]= session[s]	}
@@ -41,7 +55,7 @@ post '/contacto/facilitacion' do
 									"/ Interés: " + @f[:interest]
 		session[:errormsg]='OK'
 		@f={}
-	rescue	
+	rescue
 		session[:errormsg]='No pudimos enviar el mail. Por favor intenta más tarde o envíanos el mail a ' + ekleer
 	end
 	[:email, :fname, :lname, :zone, :interest]. each {|s|	session[s]= @f[s]	}

@@ -8,6 +8,7 @@ set :session_secret, '*&(^weq3t'
 get '/' do
 	@f= {}
 	[:email, :fname, :lname, :zone, :interest]. each {|s|	@f[s]= session[s]	}
+	@errormsg= session[:errormsg]
 	erb :index
 end
 
@@ -30,13 +31,19 @@ end
 # http://stackoverflow.com/questions/26265358/connection-refused-when-using-pony-mail-sinatra
 post '/contacto/facilitacion' do
 	@f= params
-	[:email, :fname, :lname, :zone, :interest]. each {|s|	session[s]= @f[s]	}
-
-  Pony.mail :to => 'juan.gabardini@kleer.la',
+	ekleer= 'juan.gabardini@kleer.la'
+	begin
+  	Pony.mail :to => ekleer,
           :from => 'hola@kleerer.la',
           :subject => 'Contacto desde sitio Facilitación',
           :body => "Nombre: " + @f[:fname] + '/' + @f[:lname] +
 									"/ Email:" + @f[:email] + " / Ciudad: " + @f[:zone] +
 									"/ Interés: " + @f[:interest]
-	redirect to('/')
+		session[:errormsg]='OK'
+		@f={}
+	rescue	
+		session[:errormsg]='No pudimos enviar el mail. Por favor intenta más tarde o envíanos el mail a ' + ekleer
+	end
+	[:email, :fname, :lname, :zone, :interest]. each {|s|	session[s]= @f[s]	}
+	redirect to('/#cta')
 end

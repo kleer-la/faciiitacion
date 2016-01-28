@@ -26,6 +26,28 @@
 		</noscript>
 		<!--[if lte IE 8]><link rel="stylesheet" href="/css/ie/v8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="/css/ie/v9.css" /><![endif]-->
+		<style>
+		.error{
+			background-color: red;
+			color: white;
+			border-color: black;
+			border: solid 1.5px;
+		}
+		# http://www.the-art-of-web.com/html/html5-form-validation/
+		input:required:invalid, input:focus:invalid {
+	    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAeVJREFUeNqkU01oE1EQ/mazSTdRmqSxLVSJVKU9RYoHD8WfHr16kh5EFA8eSy6hXrwUPBSKZ6E9V1CU4tGf0DZWDEQrGkhprRDbCvlpavan3ezu+LLSUnADLZnHwHvzmJlvvpkhZkY7IqFNaTuAfPhhP/8Uo87SGSaDsP27hgYM/lUpy6lHdqsAtM+BPfvqKp3ufYKwcgmWCug6oKmrrG3PoaqngWjdd/922hOBs5C/jJA6x7AiUt8VYVUAVQXXShfIqCYRMZO8/N1N+B8H1sOUwivpSUSVCJ2MAjtVwBAIdv+AQkHQqbOgc+fBvorjyQENDcch16/BtkQdAlC4E6jrYHGgGU18Io3gmhzJuwub6/fQJYNi/YBpCifhbDaAPXFvCBVxXbvfbNGFeN8DkjogWAd8DljV3KRutcEAeHMN/HXZ4p9bhncJHCyhNx52R0Kv/XNuQvYBnM+CP7xddXL5KaJw0TMAF8qjnMvegeK/SLHubhpKDKIrJDlvXoMX3y9xcSMZyBQ+tpyk5hzsa2Ns7LGdfWdbL6fZvHn92d7dgROH/730YBLtiZmEdGPkFnhX4kxmjVe2xgPfCtrRd6GHRtEh9zsL8xVe+pwSzj+OtwvletZZ/wLeKD71L+ZeHHWZ/gowABkp7AwwnEjFAAAAAElFTkSuQmCC);
+	    background-position: right top;
+	    background-repeat: no-repeat;
+	    -moz-box-shadow: none;
+	  }
+	  input:required:valid {
+	    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAepJREFUeNrEk79PFEEUx9/uDDd7v/AAQQnEQokmJCRGwc7/QeM/YGVxsZJQYI/EhCChICYmUJigNBSGzobQaI5SaYRw6imne0d2D/bYmZ3dGd+YQKEHYiyc5GUyb3Y+77vfeWNpreFfhvXfAWAAJtbKi7dff1rWK9vPHx3mThP2Iaipk5EzTg8Qmru38H7izmkFHAF4WH1R52654PR0Oamzj2dKxYt/Bbg1OPZuY3d9aU82VGem/5LtnJscLxWzfzRxaWNqWJP0XUadIbSzu5DuvUJpzq7sfYBKsP1GJeLB+PWpt8cCXm4+2+zLXx4guKiLXWA2Nc5ChOuacMEPv20FkT+dIawyenVi5VcAbcigWzXLeNiDRCdwId0LFm5IUMBIBgrp8wOEsFlfeCGm23/zoBZWn9a4C314A1nCoM1OAVccuGyCkPs/P+pIdVIOkG9pIh6YlyqCrwhRKD3GygK9PUBImIQQxRi4b2O+JcCLg8+e8NZiLVEygwCrWpYF0jQJziYU/ho2TUuCPTn8hHcQNuZy1/94sAMOzQHDeqaij7Cd8Dt8CatGhX3iWxgtFW/m29pnUjR7TSQcRCIAVW1FSr6KAVYdi+5Pj8yunviYHq7f72po3Y9dbi7CxzDO1+duzCXH9cEPAQYAhJELY/AqBtwAAAAASUVORK5CYII=);
+	    background-position: right top;
+	    background-repeat: no-repeat;
+	  }
+
+
+		</style>
 	</head>
 	<body class="index">
 
@@ -252,12 +274,23 @@
 				</header>
 				<div class="row">
 					<div class="6u 12u(narrower)">
-						<form method="POST" action="/contacto/facilitacion">
-						<input type="text" name="email" class="suscription-textbox" placeholder="tu@correo.com" value="<%= @f[:email]%>"/>
+						<%if @errormsg.to_s!='' && @errormsg!='OK'%>
+							<div class="error">
+					     <h3>Ups, ocurrió un error</h3>
+					     <p><%= @errormsg%></p>
+							</div>
+						<%end%>
+						<%if @errormsg=='OK'%>
+							<div >
+					     <h3>¡Enviado! Nos contactaremos contigo en breve.</h3>
+							</div>
+						<%end%>
+						<form method="POST" action="/contacto/facilitacion" onsubmit="return checkForm(this);">
+						<input type="email" name="email" class="suscription-textbox" placeholder="tu@correo.com" value="<%= @f[:email]%>" required/>
 						<br/>
-						<input type="text" name="fname" class="suscription-textbox" placeholder="Nombre" value="<%= @f[:fname]%>"/>
+						<input type="text" name="fname" class="suscription-textbox" placeholder="Nombre" value="<%= @f[:fname]%>" required pattern="\S{3,}.*"/>
 						<br/>
-						<input type="text" name="lname" class="suscription-textbox" placeholder="Apellido" value="<%= @f[:lname]%>"/>
+						<input type="text" name="lname" class="suscription-textbox" placeholder="Apellido" value="<%= @f[:lname]%>" required pattern="\S{3,}.*"/>
 						<br/>
 						<input type="text" name="zone" class="suscription-textbox" placeholder="Tu Ciudad" value="<%= @f[:zone]%>"/>
 						<br/>
@@ -289,15 +322,45 @@
 				</ul>
 			</footer>
 
-<script>
+<script type="text/javascript">
+
+  function checkForm(form)
+  {
+    // validation fails if the input is blank
+    if(form.email.value == "" || form.lname.value == "" || form.fname.value == "") {
+      alert("Email, Nombre y Apellido son datos requeridos para contactarnos!");
+      form.email.focus();
+      return false;
+    }
+
+    // regular expression to match names
+    var re = /\S{2,}.*/;
+
+    // validation fails if the input doesn't match our regular expression
+    if(!re.test(form.lname.value)) {
+      alert("Error: el apellido parece muy corto");
+      form.lname.focus();
+      return false;
+    }
+		if(!re.test(form.fname.value)) {
+      alert("Error: el nombre parece muy corto");
+      form.fname.focus();
+      return false;
+    }
+
+    // validation was successful
+    return true;
+  }
+
+</script>
+
+<script type="text/javascript">
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
   ga('create', 'UA-68214006-1', 'auto');
   ga('send', 'pageview');
-
 </script>
 </body>
 </html>

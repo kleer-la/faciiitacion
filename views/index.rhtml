@@ -275,7 +275,7 @@
 				<div class="row">
 					<div class="6u 12u(narrower)">
 						<%if @errormsg.to_s!='' && @errormsg!='OK'%>
-							<div class="error">	
+							<div class="error">
 					     <h3>Ups, ocurrió un error</h3>
 					     <p><%= @errormsg%></p>
 							</div>
@@ -294,7 +294,7 @@
 						<br/>
 						<input type="text" name="zone" class="suscription-textbox" placeholder="Tu Ciudad" value="<%= @f[:zone]%>"/>
 						<br/>
-						<input type="text" name="interest" class="suscription-textbox" placeholder="¿Qué te interesa?" value="<%= @f[:interest]%>"/>
+						<input type="text" name="interest" class="suscription-textbox" placeholder="¿Qué actividad te interesa?" value="<%= @f[:interest]%>"/>
 					</form>
 					</div>
 				</div>

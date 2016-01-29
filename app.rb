@@ -45,7 +45,7 @@ end
 # http://stackoverflow.com/questions/26265358/connection-refused-when-using-pony-mail-sinatra
 post '/contacto/facilitacion' do
 	@f= params
-	ekleer= 'juan.gabardini@kleer.la'
+	ekleer= 'facilitadores@kleer.la'
 	begin
   	Pony.mail :to => ekleer,
           :from => 'hola@kleerer.la',
